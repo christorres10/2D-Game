@@ -15,10 +15,7 @@ public class moveplayer : MonoBehaviour
     void Update()
     {
         if (Input.GetKey("left"))
-            transform.Translate
-            (-inputSpeed
-            * Time.deltaTime
-            , 0.0f, 0.0f);
+            transform.Translate(-inputSpeed* Time.deltaTime, 0.0f, 0.0f);
         if (Input.GetKey("up"))
             transform.Translate(0.0f, inputSpeed* Time.deltaTime, 0.0f);
         if (Input.GetKey("down"))
