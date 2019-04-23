@@ -9,6 +9,14 @@ public class Shooting : MonoBehaviour
  
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+
     }
 }
