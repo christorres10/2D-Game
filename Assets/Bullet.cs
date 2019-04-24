@@ -9,12 +9,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = transform.up * speed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
