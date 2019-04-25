@@ -4,48 +4,32 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Transform Enemy;
-    public GameObject whereToSpawn;
-    public int NumberToSpawn;
-    public float Delay;
+
+    public GameObject hazard;
+    public Vector3 spawnValues;
+    public int hazardCount;
+    public float spawnWait;
+    public float startWait;
+    public float waveWait;
 
     void Start()
     {
-
+        StartCoroutine(SpawnWaves());
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    IEnumerator SpawnWaves()
     {
-        if (other.tag == "Player")
+        yield return new WaitForSeconds(startWait);
+        while (true)
         {
-            StartCoroutine(SpawnTime());
-        }
-    }
-
-    IEnumerator SpawnTime()
-    {
-
-        for (int i = 0; i < NumberToSpawn; i++)
-        {
-            yield return new WaitForSeconds(Delay);
-            SpawnEnemy();
-        }
-
-        yield break;
-    }
-
-    void SpawnEnemy()
-    {
-
-        Instantiate(Enemy, whereToSpawn.transform.position, whereToSpawn.transform.rotation);
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            Destroy(gameObject, NumberToSpawn);
-            Destroy(whereToSpawn, NumberToSpawn);
+            for (int i = 0; i < hazardCount; i++)
+            {
+                Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+                Quaternion spawnRotation = Quaternion.identity;
+                Instantiate(hazard, spawnPosition, spawnRotation);
+                yield return new WaitForSeconds(spawnWait);
+            }
+            yield return new WaitForSeconds(waveWait);
         }
     }
 }
