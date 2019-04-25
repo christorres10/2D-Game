@@ -18,8 +18,8 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bPrefab = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bPrefab.AddForce(Vector2.up * 100f);
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+      
     }
 
 }

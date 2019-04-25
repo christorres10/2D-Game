@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public int damage = 40;
     public Rigidbody2D rb;
 
-    void Start()
+    void FixedUpdate()
     {
         rb.velocity = transform.up * speed;
     }
